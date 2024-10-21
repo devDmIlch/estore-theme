@@ -1,0 +1,23 @@
+
+.active-filter {
+	@include flex($gap: 4px);
+	@include box($padding: 6px 12px, $radius: $border-radius-small, $outline: 1px solid $light-gray);
+	@include font($line-height: 1.4, $size: 14px, $weight: 500);
+	box-shadow: $box-shadow-generic;
+
+	.active-option {
+		@include flex($gap: 4px, $align-items: center);
+		@include margin($left: 4px);
+
+		&:not(:last-child) {
+			@include padding($right: 10px);
+			border-right: 1px solid $light-gray;
+		}
+	}
+
+	.remove-option {
+		@include box($padding: 4px, $radius: $border-radius-small, $outline: 1px solid $light-gray);
+		@include font($line-height: 1.4, $size: 8px);
+		cursor: pointer;
+	}
+}

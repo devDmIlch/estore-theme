@@ -1,0 +1,244 @@
+
+.content-data {
+	@include flex($gap: 24px);
+}
+
+.details-area {
+	flex: 1 0 0;
+
+	.store-item-menu {
+		@include flex($gap: 24px);
+		@include margin($left: 24px, $right: 24px);
+
+		.sub-nav {
+			@include margin($bottom: -1px);
+			@include padding($left: 12px, $right: 12px);
+			@include font($line-height: 2, $size: 16px, $weight: 500);
+			@include border($color: $white);
+			@include border-bottom($color: transparent);
+			border-radius: $border-radius-small $border-radius-small 0 0;
+			cursor: pointer;
+
+			&.active {
+				@include border($color: $light-gray);
+				@include border-bottom($color: $white);
+				background-color: $white;
+				cursor: default;
+				pointer-events: none;
+			}
+		}
+	}
+
+	.subpage {
+		display: none;
+
+		&.active {
+			display: block;
+			border-top: 1px solid $light-gray;
+		}
+
+		&.subpage-desc {
+			padding: 24px 0;
+			@include font($size: 16px);
+		}
+	}
+
+	.desc {
+		@include font($size: 16px);
+	}
+
+	.var-selection {
+		@include flex($gap: 6px);
+
+		a {
+			text-decoration: none;
+		}
+
+		.single-var {
+			@include box($padding: 2px, $radius: $border-radius-small, $outline: 1px solid $light-gray);
+			@include height($height: 42px);
+			@include width($min-width: 42px);
+			box-sizing: border-box;
+			box-shadow: $box-shadow-generic;
+			transition: .1s;
+
+			&:hover {
+				transform: scale(1.05);
+			}
+
+			&.current {
+				background-color: $blue;
+			}
+
+			&.out-of-stock {
+				.var-color {
+					background-image: linear-gradient(45deg, transparent 45%, $light-gray 45%, $light-gray 48%, $white 48%, $white 52%, $light-gray 52%, $light-gray 55%, transparent 55%);
+					box-shadow: inset $box-shadow-small;
+				}
+
+				.var-name {
+					opacity: .5;
+				}
+			}
+
+			.var-color {
+				@include size(38px);
+				border-radius: $border-radius-small;
+				box-shadow: inset 0 0 10px -6px $black;
+			}
+
+			.var-name {
+				@include box($padding:  0 4px, $color: $white, $radius: $border-radius-small);
+				@include width($min-width: 124px, $max-width: max-content);
+				@include font($line-height: 38px, $size: 16px, $weight: 400);
+				color: $darker-gray;
+				text-decoration: none;
+			}
+		}
+	}
+
+	.price-data {
+		@include margin($top: 20px);
+
+		.price-old {
+			@include card-desc-font(16px);
+
+			.price-old-num {
+				@include add-uah-sign;
+				@include position(relative);
+				@include height($height: 18px);
+
+				.price-old-rel {
+					@include position(absolute, $left: calc(100% + 12px));
+					color: $navy;
+				}
+			}
+		}
+
+		.price-num {
+			@include add-uah-sign;
+			@include card-title-font(32px);
+			color: $green;
+
+			&:first-child {
+				@include margin($top: 30px);
+				color: $black;
+			}
+		}
+	}
+
+	.store-item-actions {
+		@include flex($gap: 12px);
+		@include margin($top: 28px);
+
+		.in-stock {
+			@include width($width: 100%);
+			@include margin($left: 4px);
+			@include font($line-height: 1.4, $size: 14px, $weight: 500);
+			color: $green;
+		}
+
+		.action-button {
+			@include box($padding: 8px 16px, $radius: $border-radius-small);
+			@include font($line-height: 1.4, $size: 18px, $weight: 600);
+			box-shadow: $box-shadow-generic;
+			color: $white;
+			opacity: .9;
+			transition: .1s;
+			cursor: pointer;
+
+			&.add-to-cart {
+				background-color: $lime;
+			}
+
+			&.quick-buy {
+				background-color: $blue;
+			}
+
+			&.inactive {
+				background-color: gray;
+				pointer-events: none;
+			}
+
+			&:hover {
+				opacity: 1;
+			}
+
+			&.button-loading {
+				opacity: .5 !important;
+
+				&::after {
+					content: '';
+					display: inline-block;
+					@include position(relative, $top: 3px);
+					@include size(14px);
+					margin-left: 8px;
+					border-radius: 50%;
+					border: 2px solid $white;
+					border-bottom-color: transparent;
+					animation: spin linear 1s infinite;
+				}
+			}
+		}
+	}
+}
+
+.thumbnail-area {
+	@include width($width: 550px);
+
+	.var-slider {
+		@include width($width: 100%);
+		@include box($padding: 12px, $radius: $border-radius-medium, $outline: 1px solid $light-gray);
+		aspect-ratio: 1/1;
+		box-shadow: $box-shadow-generic;
+
+		.store-item-picture {
+			@include size(100%);
+			object-fit: cover;
+		}
+
+		.splide__track {
+			@include height($height: 100%);
+		}
+	}
+
+	.var-slider-nav {
+		@include size($width: 100%, $height: 56px);
+		@include margin($top: 24px);
+
+		.single-slide {
+			@include box($padding: 0, $radius: $border-radius-small);
+			box-shadow: $box-shadow-generic;
+
+			.nav-item-picture {
+				@include size(100%);
+				box-shadow: inset 0 0 10px -6px $black;
+			}
+
+			&.is-active {
+				border-color: $white !important;
+
+				.nav-item-picture {
+					transition: .1s;
+					transform: scale(1.2);
+					box-shadow: none;
+				}
+			}
+		}
+
+		.splide__track {
+			@include margin($left: 52px, $right: 52px);
+			overflow-x: clip;
+			overflow-y: visible;
+		}
+
+		.splide__arrow {
+			@include box($padding: 4px, $radius: $border-radius-small, $color: $white, $outline: 1px solid $light-gray);
+			box-shadow: $box-shadow-generic;
+
+			svg {
+				@include width($width: 10px);
+			}
+		}
+	}
+}

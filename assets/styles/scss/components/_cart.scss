@@ -1,0 +1,148 @@
+
+.cart-pop-up {
+	@include flex($gap: 0, $direction: column);
+	@include position(absolute, $top: 100%, $right: 0);
+	@include width($width: 400px, $max-width: 95vw);
+	@include box($padding: 0, $radius: $border-radius-medium, $color: $white, $outline: 1px solid $light-gray);
+	box-shadow: $box-shadow-extensive;
+	opacity: 0;
+	overflow: auto;
+	pointer-events: none;
+	transition: .2s;
+
+	&.active {
+		@include margin($top: 12px);
+		opacity: 1;
+		pointer-events: all;
+	}
+
+	.cart-header {
+		@include font($size: 18px);
+		@include padding($top: 8px, $right: 8px, $left: 16px, $bottom: 8px);
+		border-bottom: 1px solid $light-gray;
+	}
+
+	.shopping-cart {
+		@include height($min-height: 100px, $max-height: 400px);
+		padding: 8px 8px 0;
+	}
+
+	.cart-actions {
+		padding: 8px;
+		border-top: 1px solid $light-gray;
+		order: 1;
+
+		.cart-link {
+			display: block;
+			@include box($padding: 4px 12px, $color: $blue, $radius: $border-radius-small);
+			@include font($line-height: 1.4, $size: 16px);
+			text-align: center;
+			color: $white;
+			text-decoration: none;
+		}
+	}
+}
+
+.shopping-cart {
+	@include margin($bottom: 0);
+	overflow: auto;
+
+	.resizer {
+		@include padding($top: 4px, $bottom: 4px);
+		text-align: center;
+	}
+
+	.cart-empty {
+		display: none;
+		@include font($size: 16px);
+		padding: 32px 0;
+		text-align: center;
+
+		&:last-child {
+			display: block;
+		}
+	}
+}
+
+.single-cart-item {
+	@include position(relative);
+	@include flex($gap: 12px, $wrap: nowrap);
+	@include margin($bottom: 8px);
+	@include box($padding: 4px, $radius: $border-radius-medium, $outline: 1px solid $light-gray);
+
+	&.error {
+		@include margin($top: 20px);
+
+		.item-error {
+			display: block;
+		}
+	}
+
+	.item-error {
+		display: none;
+		@include box($color: $white, $padding: 0 12px, $radius: $border-radius-small $border-radius-small 0 0);
+		@include position(absolute, $top: -16px, $left: 12px);
+		@include font($size: 12px, $weight: 700);
+		color: $red;
+		border: 1px solid $light-gray;
+		border-bottom: none;
+
+	}
+
+	.item-thumbnail {
+
+		img {
+			@include size(100px);
+			border-radius: $border-radius-small;
+		}
+	}
+
+	.item-data {
+		.item-title {
+			@include margin($top: 0, $bottom: 12px, $left: 0);
+			@include font($line-height: 1.4, $size: 20px, $weight: 500);
+		}
+
+		.item-price {
+			@include margin($top: 4px, $bottom: 0);
+			@include font($size: 16px);
+
+			.price-old-num {
+				@include font($size: 12px);
+			}
+		}
+	}
+
+	.number {
+		@include position(absolute, $bottom: 8px, $right: 8px);
+		@include flex($gap: 0);
+		@include font($line-height: 1, $size: 14px);
+
+		.number-decrease, .number-increase {
+			@include flex($align-items: center, $justify-content: center);
+			@include size(20px);
+			@include box($padding: 2px, $radius: $border-radius-small, $outline: 1px solid $light-gray);
+			cursor: pointer;
+
+			&.disabled {
+				opacity: .5;
+				pointer-events: none;
+			}
+		}
+
+		.number-in-cart {
+			@include width($min-width: 16px);
+			@include padding($right: 8px, $left: 8px);
+			@include height(20px);
+			@include font($line-height: 20px, $size: 14px, $weight: 600);
+			text-align: center;
+		}
+	}
+
+	.remove-item {
+		@include position(absolute, $right: 12px, $bottom: 36px);
+		@include font($size: 12px);
+		color: $red;
+		cursor: pointer;
+	}
+}

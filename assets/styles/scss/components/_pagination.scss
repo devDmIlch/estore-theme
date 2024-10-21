@@ -1,0 +1,72 @@
+
+.pagination {
+	@include flex($gap: 8px, $justify-content: center);
+	@include margin($top: 48px);
+
+	.pag-item {
+		@include position(relative);
+		@include box($padding: 4px, $radius: $border-radius-small, $outline: 1px solid $light-gray);
+		@include size(32px);
+		@include font($line-height: 24px, $size: 18px, $weight: 600);
+		box-shadow: $box-shadow-generic;
+		background-color: $white;
+		text-align: center;
+		cursor: pointer;
+
+		&.pag-nav {
+			@include font($line-height: 20px, $size: 24px, $weight: 600);
+
+			&.is-active-neighbour {
+				visibility: collapse;
+				pointer-events: none;
+			}
+
+			&.prev {
+				order: 0;
+			}
+
+			&.next {
+				order: 100;
+			}
+		}
+
+		&.pag-page {
+			order: 50;
+			display: none;
+
+			&.is-active-neighbour, &.active, &.always-show {
+				display: block;
+			}
+
+			&.first {
+				order: 5;
+			}
+
+			&.last {
+				order: 95;
+			}
+		}
+
+		&.dummy {
+			display: none;
+			cursor: default;
+
+			&.shown {
+				display: block;
+			}
+
+			&.first {
+				order: 10;
+			}
+
+			&.last {
+				order: 90;
+			}
+		}
+
+		&.active {
+			background-color: $light-gray;
+			box-shadow: none;
+		}
+	}
+}

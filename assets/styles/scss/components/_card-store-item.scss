@@ -1,0 +1,142 @@
+
+.card-store-item {
+	@include position(relative);
+	@include flex($direction: column, $gap: 12px);
+	@include box($padding: 12px, $radius: $border-radius-medium, $outline: 1px solid $light-gray);
+	flex: 250px 0 0;
+	box-shadow: $box-shadow-generic;
+	transition: transform .3s;
+
+	&:hover {
+		transform: scale(1.05);
+	}
+
+	a {
+		text-decoration: none;
+	}
+
+	.item-tag {
+		@include position(absolute, 18px, 18px);
+		@include box($padding: 4px 12px, $radius: $border-radius-small);
+		@include font($size: 14px, $weight: 700, $font-family: Arial);
+		text-transform: uppercase;
+		color: $white;
+		box-shadow: $box-shadow-generic;
+		pointer-events: none;
+
+		&[type='sale'] {
+			background-color: $lime;
+		}
+
+		&[type='new'] {
+			background-color: $purple;
+		}
+
+		&[type='hot'] {
+			background-color: $orange;
+		}
+
+		.tag-text {
+			opacity: .9;
+		}
+	}
+
+	.item-thumbnail {
+		@include box($padding: 0, $radius: $border-radius-small, $outline: 1px solid $light-gray);
+		@include width($width: 100%);
+		aspect-ratio: 1/1;
+		overflow: hidden;
+
+		img {
+			@include size(100%);
+			object-fit: contain;
+		}
+	}
+
+	.item-details {
+		@include flex($direction: column, $gap: 6px);
+		flex: 1 1 0;
+	}
+
+	.item-variations {
+		@include flex($gap: 6px);
+
+		.single-var {
+			@include box($padding: 2px, $radius: $border-radius-small, $outline: 1px solid $light-gray);
+			@include height($height: 32px);
+			box-sizing: border-box;
+			box-shadow: $box-shadow-generic;
+
+			.var-color {
+				@include size(28px);
+				border-radius: $border-radius-small;
+				box-shadow: inset 0 0 10px -6px $black;
+			}
+
+			.var-name {
+				@include width($min-width: 124px, $max-width: max-content);
+				@include font($line-height: 28px, $size: 16px, $weight: 400);
+				padding: 0 4px;
+				color: $darker-gray;
+			}
+		}
+	}
+
+	.item-name {
+		@include card-title-font($size: 18px);
+	}
+
+	.item-description {
+		@include card-desc-font;
+	}
+
+	.item-price {
+		@include margin($top: auto);
+	}
+
+	.var-price {
+		@include margin($top: 12px);
+		display: none;
+
+		&.active {
+			display: block;
+		}
+
+		.price-old {
+			@include card-desc-font;
+
+			.price-old-num {
+				@include add-uah-sign;
+				@include position(relative);
+				@include height($height: 18px);
+
+				.price-old-rel {
+					@include position(absolute, $left: calc(100% + 12px));
+					color: $navy;
+				}
+			}
+		}
+
+		.price-num {
+			@include add-uah-sign;
+			@include card-title-font;
+			color: $green;
+
+			&:first-child {
+				@include margin($top: 30px);
+				color: $black;
+			}
+		}
+	}
+
+	.item-link {
+		@include position(absolute, $bottom: 12px, $right: 12px);
+
+		a {
+			display: block;
+			@include size(36px);
+			background: $cart-icon;
+			background-size: cover;
+		}
+	}
+}

@@ -1,0 +1,48 @@
+
+// Abstracts.
+
+@import 'abstracts/_mixin.scss';
+@import 'abstracts/_variable.scss';
+
+// Base.
+
+@import 'base/_typography.scss';
+@import 'base/_states.scss';
+
+// Components.
+
+@import 'components/_active_filters.scss';
+@import 'components/_cart.scss';
+@import 'components/_card-store-item.scss';
+@import 'components/_card-order.scss';
+@import 'components/_filters.scss';
+@import 'components/_menu-main.scss';
+@import 'components/_pagination.scss';
+@import 'components/_sorter.scss';
+@import 'components/_tooltips.scss';
+
+// Layout.
+
+@import 'layout/_header.scss';
+@import 'layout/_heading.scss';
+@import 'layout/_body.scss';
+@import 'layout/_footer.scss';
+
+// Pages.
+
+@import 'pages/_404.scss';
+@import 'pages/_archive.scss';
+@import 'pages/_cart.scss';
+@import 'pages/_front.scss';
+@import 'pages/_login.scss';
+@import 'pages/_profile.scss';
+@import 'pages/_sale-item.scss';
+@import 'pages/_store-item.scss';
+
+// Utilities.
+
+@import 'utilities/_fonts.scss';
+
+// Libraries.
+
+@import "~@splidejs/splide/dist/css/splide.min.css";

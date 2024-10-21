@@ -1,0 +1,134 @@
+
+.website-header {
+	$full-header-size: 80px;
+	$shrunk-header-size: 48px;
+
+	@include position(fixed, $z-index: 10000);
+	@include flex($gap: 12px, $justify-content: center, $align-items: center);
+	@include size($width: 100%, $height: $full-header-size);
+	@include border-bottom($color: $light-gray);
+	background-color: $white;
+	box-shadow: $box-shadow-generic;
+	transition: .2s;
+
+	& + div, & + section, & + main {
+		@include padding($top: 80px);
+		transition: .2s;
+	}
+
+	.header-menu {
+		@include position(absolute, $top: $full-header-size, $left: 12px);
+		@include width($width: 300px, $max-width: 100vw);
+		@include height($max-height: calc(100vh - calc($full-header-size + 24px) - var(--wp-admin--admin-bar--height, 0)));
+		@include margin($top: 12px);
+		@include box($padding: 12px, $radius: $border-radius-medium, $color: $white, $outline: 1px solid $light-gray);
+		box-shadow: $box-shadow-generic;
+		transition: .2s, left .7s;
+
+		&.inactive {
+			left: -320px;
+		}
+	}
+
+	.search-area {
+		@include flex($gap: 8px, $align-items: center);
+
+		.search-box {
+			@include position(relative, $z-index: 10);
+			@include width($width: 460px, $max-width: 50vw);
+			@include box($padding: 8px 16px, $radius: 1000px, $color: $light-gray, $outline: none);
+			@include font($line-height: 1.4, $size: 14px);
+			border: none;
+		}
+
+		.search-submit {
+			@include flex($justify-content: center, $align-items: center);
+			@include size(32px);
+			@include box($padding: 4px, $radius: 50%, $color: $white, $outline: 1px solid $light-gray);
+			box-shadow: $box-shadow-generic;
+			background: $search-icon no-repeat center;
+			background-size: 14px;
+			transition: .5s;
+
+			&.inactive {
+				transform: translateX(-200%);
+				pointer-events: none;
+			}
+		}
+	}
+
+	.menu-controls {
+		@include position(absolute, $left: 24px);
+		@include flex($gap: 12px, $align-items: center);
+
+		.menu-trigger {
+			@include font($size: 44px, $weight: 600, $font-family: serif);
+			cursor: pointer;
+		}
+
+		.website-identity {
+			@include height($height: 40px);
+			transition: .2s;
+
+			img {
+				@include size(100%);
+				object-fit: contain;
+			}
+		}
+	}
+
+	.user-controls {
+		@include position(absolute, $right: 24px);
+		@include flex($gap: 12px);
+	}
+
+	&.shrink {
+		@include height($height: $shrunk-header-size);
+
+		.header-menu {
+			@include height($max-height: calc(100vh - calc($shrunk-header-size + 24px) - var(--wp-admin--admin-bar--height, 0px)));
+			top: 44px;
+		}
+
+		.menu-controls {
+			.website-identity {
+				@include height($height: 40px);
+			}
+		}
+	}
+
+	.cart-trigger {
+		@include size(32px);
+		background: $cart-icon no-repeat center;
+		background-size: 24px;
+		cursor: pointer;
+
+		&[new] {
+			position: relative;
+
+			&::after {
+				content: '+' attr(new);
+				@include flex($justify-content: center, $align-items: center);
+				@include position(absolute, $top: -8px, $right: -8px);
+				@include box($padding: 2px, $radius: 50%, $color: $red);
+				@include size(16px);
+				@include font($size: 9px, $weight: 700);
+				color: $white;
+			}
+		}
+	}
+
+	.profile-link {
+		display: block;
+		@include size(32px);
+		background: $profile-icon no-repeat center;
+		background-size: 24px;
+	}
+
+	.login-link {
+		display: block;
+		@include size(32px);
+		background: $login-icon no-repeat center;
+		background-size: 24px;
+	}
+}

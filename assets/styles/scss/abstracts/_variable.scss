@@ -1,0 +1,75 @@
+
+// Main Colors.
+
+$black: #333;
+$darker-gray: #666;
+$dark-gray: #999;
+$gray: #dedede;
+$light-gray: #ECECEC;
+$white: #fff;
+
+
+$black-transparent: #3333;
+
+// Additional Colors.
+
+$maroon: #730303;
+$red: #DB4446;
+$orange: #ff851e;
+$gold: #cea000;
+$yellow: #F8DA0D;
+$lime: #6ad305;
+$green: #058E6E;
+$blue: #5185c5;
+$navy: #421EB7;
+$purple: #9317FF;
+
+
+// Text Colors.
+
+$text-color: $black;
+$text-color-alt: $gray;
+$text-color-white: $white;
+
+
+// Text properties.
+
+$font-family: Jura, Arial, sans-serif;
+
+
+// Border Properties.
+
+$border-radius-small: 3px;
+$border-radius-medium: 8px;
+$border-radius-extensive: 12px;
+
+
+// Box-shadow
+
+$box-shadow-small: 0 0 0 1px $light-gray;
+$box-shadow-generic: 0 0 10px -6px $darker-gray;
+$box-shadow-extensive: 0 0 0 2000px $black-transparent;
+
+
+// Animations
+
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+
+// SVGs
+
+$svg-prefix: "data:image/svg+xml; utf8,";
+$svg-path: "~/assets/images/svg/";
+
+$cart-icon:    url($svg-path + "cart.svg");
+$profile-icon: url($svg-path + "profile.svg");
+$login-icon:   url($svg-path + "login.svg");
+$logout-icon:  url($svg-path + "logout.svg");
+$search-icon:  url($svg-path + "search.svg");

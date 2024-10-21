@@ -1,0 +1,43 @@
+
+*[tooltip] {
+	@include position(relative);
+
+	&::before {
+		@include position(absolute);
+		@include border($color: $purple, $width: 2px);
+		@include box($padding: 4px, $radius: 0, $color: $white);
+		@include border-bottom($color: transparent);
+		@include border-right($color: transparent);
+		content: '';
+		transform: rotate(45deg);
+	}
+
+	&::after {
+		@include position(absolute);
+		@include max-width($width: max-content, $max-width: 200px);
+		@include border($color: $purple, $width: 2px);
+		@include font($weight: 500, $size: 14px);
+		@include box($padding: 4px 10px, $radius: $border-radius-medium, $color: $white);
+		content: attr(tooltip);
+	}
+}
+
+*[tooltip-pos="br"] {
+
+}
+
+*[tooltip-pos="br"] {
+
+}
+
+*[tooltip-pos="br"] {
+
+}
+
+*[tooltip-pos="br"] {
+
+}
+
+*[tooltip-pos="br"] {
+
+}

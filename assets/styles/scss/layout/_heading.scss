@@ -1,0 +1,51 @@
+
+.page-heading {
+	@include position(relative);
+	@include width($max-width: 100vw);
+	@include margin($bottom: 24px);
+	@include padding($left: 12px, $right: 12px);
+
+	&.simple-color {
+		background-image:
+			linear-gradient(30deg, rgba(255, 255, 255, .2), transparent),
+			linear-gradient(60deg, rgba(255, 255, 255, .03) 35%, rgba(255, 255, 255, .03) 45%, rgba(0, 0, 0, .01) 45%, transparent 55%);
+	}
+
+	.heading-content {
+		@include flex($gap: 0, $align-items: flex-end);
+		@include position(relative);
+		@include width($max-width: 900px);
+		@include height($min-height: 240px);
+		@include margin($left: auto, $right: auto);
+
+		.title-area {
+			@include position(relative, $bottom: 12px);
+			@include width($max-width: 600px);
+			@include margin($top: 60px);
+
+			.page-title {
+				@include margin($top: 0, $bottom: 0);
+				line-height: 1;
+				color: $white;
+			}
+
+			.sale-date {
+				@include font($line-height: 1.4, $size: 28px, $weight: 600);
+				text-transform: capitalize;
+				color: $white;
+				opacity: .5;
+			}
+		}
+
+		.related-categories {
+			@include position(absolute, $right: 0, $bottom: 12px);
+			-webkit-mask-image: -webkit-gradient(linear, left top, left bottom,
+				from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
+
+			.single-cat {
+				@include font($line-height: 1.4, $size: 20px);
+				color: rgba(255, 255, 255, 0.3);
+			}
+		}
+	}
+}

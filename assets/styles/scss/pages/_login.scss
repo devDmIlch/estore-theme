@@ -1,0 +1,173 @@
+
+.login, .register, .recovery {
+	.disabled {
+		display: none;
+	}
+
+	.website-header, .website-footer {
+		display: none;
+	}
+
+	.login-section, .register-section, .recovery-section {
+		@include width($width: 400px, $max-width: 100%);
+		padding: 0 12px;
+
+		.website-logo {
+			@include width($max-width: 100%);
+			@include height($height: 44px);
+			@include margin($top: 40px);
+		}
+	}
+
+	.login-form {
+		@include flex($direction: column, $gap: 6px);
+		@include margin($top: 24px, $bottom: 24px);
+	}
+
+	.password-rules {
+		@include margin($top: -12px);
+		@include font($line-height: 1.4, $size: 14px, $weight: 500);
+
+		.password-strength {
+			@include margin($bottom: 12px);
+		}
+
+		.password-strength-bar {
+			@include size($height: 4px, $width: 100%);
+			@include box($padding: 0, $radius: $border-radius-small, $outline: 1px solid $gray);
+
+			&[level="0"] {
+				background-image: linear-gradient(45deg, $maroon 4%, $white 5%);
+
+				& ~ .password-strength-level.invalid {
+					display: initial;
+				}
+			}
+
+			&[level="1"] {
+				background-image: linear-gradient(45deg, $red 24%, $white 25%);
+
+				& ~ .password-strength-level.low {
+					display: initial;
+				}
+			}
+
+			&[level="2"] {
+				background-image: linear-gradient(45deg, $yellow 49%, $white 50%);
+
+				& ~ .password-strength-level.medium {
+					display: initial;
+				}
+			}
+
+			&[level="3"] {
+				background-image: linear-gradient(45deg, $lime 74%, $white 75%);
+
+				& ~ .password-strength-level.high {
+					display: initial;
+				}
+			}
+
+			&[level="4"] {
+				background-image: linear-gradient(45deg, $green 99%, $white);
+
+				& ~ .password-strength-level.formidable {
+					display: initial;
+				}
+			}
+		}
+
+		.password-strength-level {
+			display: none;
+			font-weight: 700;
+
+			&.invalid {
+				color: $maroon;
+			}
+
+			&.low {
+				color: $red;
+			}
+
+			&.medium {
+				color: $yellow;
+			}
+
+			&.high {
+				color: $lime;
+			}
+
+			&.formidable {
+				color: $green;
+			}
+		}
+
+		.rule {
+			@include flex($gap: 4px, $align-items: center, $wrap: nowrap);
+			@include margin($top: 0, $bottom: 8px);
+			line-height: 16px;
+
+			&::before {
+				@include font($size: 24px);
+				content: '\D7';
+				color: $red;
+			}
+
+			&.disabled {
+				display: none;
+			}
+		}
+	}
+
+	.login-submit, .register-submit, .recovery-submit {
+		@include width($width: 100%);
+		@include height($height: 40px);
+		@include box($padding: 4px, $radius: $border-radius-small, $color: $blue);
+		@include font($weight: 600, $size: 18px);
+		color: $white;
+		border: none;
+		cursor: pointer;
+		opacity: .9;
+		transition: .2s;
+
+		&:hover {
+			opacity: 1;
+		}
+
+		&.inactive {
+			opacity: .5;
+			pointer-events: none;
+		}
+	}
+
+	.invalid-data-error {
+		@include margin($bottom: 6px);
+		@include font($weight: 500, $size: 16px);
+		color: $red;
+	}
+
+	.login-links {
+		@include flex($justify-content: space-between);
+
+		.link {
+			@include font($weight: 500, $size: 16px);
+			text-decoration: underline;
+			text-underline-offset: 2px;
+			color: $blue;
+		}
+	}
+
+	.login-error-message {
+		@include margin($top: 24px);
+		@include box($padding: 12px 8px, $radius: $border-radius-small, $color: $red);
+		@include font($line-height: 1.25, $size: 16px, $weight: 500);
+		color: $white;
+	}
+
+	.login-success-message {
+		@include margin($top: 24px);
+		@include box($padding: 12px 8px, $radius: $border-radius-small, $color: $lime);
+		@include font($line-height: 1.25, $size: 16px, $weight: 500);
+		color: $white;
+	}
+}

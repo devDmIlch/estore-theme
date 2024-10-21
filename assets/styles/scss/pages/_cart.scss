@@ -1,0 +1,67 @@
+
+.cart {
+
+	.cart {
+		@include margin($bottom: 24px);
+	}
+
+	section {
+		@include flex($gap: 8px);
+		@include margin($bottom: 24px);
+		@include padding($bottom: 24px);
+
+		&:not(:last-child) {
+			border-bottom: 1px solid $light-gray;
+		}
+
+		h2 {
+			@include width($width: 100%);
+			@include margin($bottom: 24px);
+			@include font($size: 24px);
+		}
+
+		.input-label {
+			flex: 1 0 320px;
+		}
+
+		.save-section-data {
+			@include width($width: 100%);
+			text-align: right;
+
+			.checkbox-input {
+				@include position(relative, $top: 2px);
+				@include size(15px);
+				cursor: pointer;
+			}
+
+			.label-text {
+				@include font($size: 16px);
+			}
+		}
+	}
+
+	.details-cart {
+		.shopping-cart {
+			@include width($width: 100%);
+		}
+
+		.price-sum {
+			@include width($width: 100%);
+			@include font($size: 32px, $weight: 600);
+			text-align: right;
+		}
+	}
+
+	.cart-actions {
+
+		.order-confirm {
+			display: block;
+			@include width($width: max-content);
+			@include box($padding: 8px 24px, $color: $blue, $radius: $border-radius-small);
+			@include font($line-height: 1.4, $size: 20px, $weight: 500);
+			text-align: center;
+			color: $white;
+			text-decoration: none;
+		}
+	}
+}

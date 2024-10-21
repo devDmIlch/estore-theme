@@ -1,0 +1,58 @@
+
+.card-order {
+	@include box($padding: 12px, $radius: $border-radius-medium, $outline: 1px solid $light-gray);
+	flex: 0 0 100%;
+
+	.order-items {
+		@include flex($gap: 12px);
+		@include margin($bottom: 24px);
+
+		.card-store-item {
+			@include flex($gap: 12px, $direction: row);
+			@include width($max-width: calc(50% - 6px));
+			@include box($padding: 8px, $radius: $border-radius-small);
+			flex: 1 0 45%;
+			box-shadow: none;
+			transform: none;
+
+			@media (max-width: 600px) {
+				flex: 0 1 100%;
+				max-width: unset;
+			}
+
+			.item-thumbnail {
+				@include size(100px);
+			}
+		}
+	}
+
+	.post-status {
+		@include flex($gap: 12px);
+		@include margin($top: 0, $bottom: 0);
+		@include font($line-height: 1.4, $size: 18px, $weight: 600);
+
+		.status-text {
+			&[type="1"], &[type="2"], &[type="9"] {
+				color: $gold;
+			}
+
+			&[type="3"] {
+				color: $green;
+			}
+
+			&[type="0"], &[type="10"] {
+				color: $dark-gray;
+			}
+
+			&[type="20"] {
+				color: $red;
+			}
+		}
+
+		.cancel-order {
+			@include margin($left: auto);
+			color: $red;
+			cursor: pointer;
+		}
+	}
+}

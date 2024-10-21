@@ -1,0 +1,11 @@
+/.idea/
+/node_modules/
+/vendor/
+/assets/build/
+
+/*.lock
+/.DS_Store
+/.phpcs.cache
+/.yarnrc.yml
+/Thumbs.db
+/package-lock.json

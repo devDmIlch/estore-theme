@@ -1,0 +1,65 @@
+
+.archive-sorter {
+	@include position(relative);
+	@include width($width: 300px);
+	@include margin($left: auto);
+
+	.sort-ico {
+		@include sort-ico(10px);
+		@include margin($right: 6px);
+	}
+
+	.sorter-name {
+		@include flex($gap: 4px, $align-items: center);
+		@include box($padding: 6px 12px, $radius: $border-radius-small, $outline: 1px solid $light-gray);
+		@include font($line-height: 1.4, $size: 14px, $weight: 500);
+		box-shadow: $box-shadow-generic;
+		cursor: pointer;
+
+		.sort-option-selected {
+			font-weight: 700;
+		}
+	}
+
+	.dropdown-ico {
+		@include box($padding: 4px, $radius: $border-radius-small, $outline: 1px solid $light-gray);
+		@include margin($left: auto);
+		box-shadow: $box-shadow-generic;
+		pointer-events: none;
+
+		&::before {
+			@include downward-caret-ico(5px);
+			content: '';
+		}
+	}
+
+	.sorter-dropdown {
+		@include position(absolute, $top: calc(100% + 8px), $z-index: 1000);
+		@include width($width: 100%);
+		@include box($padding: 4px, $radius: $border-radius-small, $outline: 1px solid $light-gray);
+		box-shadow: $box-shadow-generic;
+		background-color: $white;
+		transition: .2s;
+
+		&:not(.active) {
+			top: 100%;
+			opacity: 0;
+		}
+
+		.sort-option {
+			@include font($line-height: 1.4, $size: 14px, $weight: 500);
+			border-radius: $border-radius-small;
+			padding: 4px 8px;
+			cursor: pointer;
+
+			&.active {
+				background-color: $light-gray;
+				cursor: default;
+			}
+
+			&:not(:last-child) {
+				@include margin($bottom: 4px);
+			}
+		}
+	}
+}

@@ -1,0 +1,294 @@
+
+// General Styles.
+
+.estore-metabox-row {
+	@include flex($direction: row, $gap: 1px);
+	@include width($width: 100%);
+	background-color: $light-gray;
+
+	&:not(:last-child) {
+		@include border-bottom($color: $light-gray);
+	}
+}
+
+.estore-metabox-column {
+	flex: 1;
+	padding: 16px;
+	background-color: $white;
+
+	&.fixed-width {
+		flex: 0 1 250px;
+	}
+
+	.estore-metabox-subsection {
+
+		&:not(:last-child) {
+			@include margin($bottom: 12px);
+		}
+
+		h1, h2, h3, h4 {
+			margin: 0 0 12px;
+		}
+
+		p {
+			margin: 0 0 8px;
+		}
+
+		.boxed {
+			@include box($padding: 8px, $radius: $border-radius-small, $outline: 1px solid $light-gray);
+		}
+	}
+}
+
+.estore-metabox-field {
+	@include position(relative);
+	@include width($min-width: 300px);
+
+	&.block-label {
+		display: block;
+	}
+
+	&.inline-label {
+		display: inline-block;
+	}
+
+	input {
+		@include admin-input;
+		@include width($min-width: 300px);
+		@include height($height: 36px);
+
+		&[type="color"] {
+			cursor: pointer;
+
+			&::-webkit-color-swatch-wrapper {
+				padding: 2px 1px 2px 100px;
+			}
+
+			&::-webkit-color-swatch {
+				border-radius: $border-radius-small;
+			}
+		}
+
+		&[type="checkbox"] {
+			cursor: pointer;
+			@include position(relative);
+			@include width($min-width: 0, $width: 48px);
+			@include height($height: 24px);
+			@include margin($left: 12px, $bottom: 12px);
+			border-radius: 5000px;
+			transition: .2s;
+
+			&::before {
+				transform: scale(.01);
+			}
+
+			&::after {
+				content: '';
+				@include position(absolute, $top: 2px, $left: 2px);
+				@include size(18px);
+				@include box($radius: 500px, $padding: 0, $color: $light-gray, $outline: 1px solid $dark-gray);
+				box-shadow: inset $box-shadow-generic;
+				transition: .2s;
+			}
+		}
+
+		&.active {
+			&::after {
+				@include position($left: 26px);
+				background-color: $blue;
+				outline-color: $navy;
+			}
+		}
+	}
+
+	textarea {
+		@include admin-input;
+		@include width($width: 100%);
+		@include height($min-height: 200px);
+		@include font($line-height: 1.4, $size: 14px);
+		padding: 12px;
+	}
+
+	select {
+		@include admin-input;
+		@include width($min-width: 300px);
+		@include height(36px);
+	}
+
+	.field-name {
+		@include position($position: absolute, $top: -6px, $left: 12px);
+		@include font($line-height: 1, $size: 12px);
+		padding: 0 4px;
+		background-color: $white;
+		pointer-events: none;
+
+		&.large {
+			@include font($size: 14px);
+		}
+
+		&.editor-name {
+			display: block;
+			@include position($position: relative, $top: 0, $left: -4px);
+			@include margin($bottom: 12px);
+			@include font($size: 20px, $weight: 500);
+		}
+
+		& ~ input {
+			@include margin($top: 12px);
+		}
+
+		.required {
+			@include font($line-height: 0, $size: 16px, $weight: 900);
+		}
+	}
+}
+
+// Variation Styles.
+
+.variations-section {
+	.variation-item {
+		@include position(relative);
+		@include flex($wrap: wrap, $gap: 0);
+		@include margin($bottom: 12px);
+		@include border($color: $light-gray);
+
+		.var-controls {
+			display: none;
+
+			@include position(absolute, $top: -1px, $right: -1px);
+			@include flex($direction: column, $gap: 1px);
+			@include border($color: $light-gray);
+			background-color: $light-gray;
+
+			.var-del, .var-move-up, .var-move-down {
+				cursor: pointer;
+				text-align: center;
+				background-color: $white;
+			}
+
+			.var-del {
+				@include font($line-height: 1, $size: 12px);
+				padding: 6.5px 7px;
+			}
+
+			.var-move-up, .var-move-down {
+				@include font($line-height: 1, $size: 14px);
+				padding: 6px 7px;
+			}
+		}
+
+		.media-selected {
+			@include flex($gap: 10px);
+			margin-bottom: 10px;
+
+			.var-image-icon {
+				@include position(relative);
+				@include size(70px);
+				@include border($width: 3px, $color: white);
+				box-shadow: $box-shadow-small;
+
+				img {
+					@include size(70px);
+					object-fit: cover;
+				}
+
+				.var-image-remove, .var-image-move-up, .var-image-move-down {
+					@include flex($justify-content: center);
+					@include size(10px);
+					@include box($padding: 2px, $radius: 0, $color: $white);
+					cursor: pointer;
+					transition: opacity .2s;
+				}
+
+				.var-image-remove {
+					@include position(absolute, $top: -3px, $right: -3px);
+
+					&:before {
+						@include font($line-height: 11px, $size: 11px);
+						content: '\2716';
+					}
+				}
+
+				.var-image-move-up, .var-image-move-down {
+					opacity: 0;
+					pointer-events: none;
+				}
+
+				.var-image-move-up {
+					@include position(absolute, $top: 40%, $left: -3px);
+
+					&:before {
+						@include font($line-height: 11px, $size: 11px);
+						content: '\1F808';
+					}
+				}
+
+				.var-image-move-down {
+					@include position(absolute, $top: 40%, $right: -3px);
+
+					&:before {
+						@include font($line-height: 11px, $size: 11px);
+						content: '\1F80A';
+					}
+				}
+
+				&:first-child {
+					.var-image-move-up {
+						display: none;
+					}
+				}
+
+				&:last-child {
+					.var-image-move-down {
+						display: none;
+					}
+				}
+
+				&:hover {
+					.var-image-move-up, .var-image-move-down {
+						opacity: 1;
+						pointer-events: all;
+					}
+				}
+			}
+		}
+
+		.var-images {
+
+			.add-prompt {
+				display: block;
+				text-align: center;
+			}
+		}
+
+		.link {
+			text-decoration: underline;
+			text-underline-offset: 4px;
+			cursor: pointer;
+		}
+
+		&:first-child {
+			.var-move-up {
+				opacity: 0.5;
+				pointer-events: none;
+			}
+		}
+
+		&:nth-last-child(2) {
+			.var-move-down {
+				opacity: 0.5;
+				pointer-events: none;
+			}
+		}
+	}
+
+	.var-add {
+		@include flex($align-items: center, $justify-content: center);
+		@include size(24px);
+		@include box($padding: 6px, $radius: 0, $color: $white, $outline: 2px solid $light-gray);
+		@include font($line-height: 0, $size: 36px);
+		@include border($width: 1px, $color: $gray);
+		margin: 12px auto 0;
+		cursor: pointer;
+	}
+}

@@ -1,0 +1,15 @@
+
+// Abstracts.
+
+@import 'abstracts/_mixin.scss';
+@import 'abstracts/_variable.scss';
+
+// Base.
+
+@import 'base/_admin_typography.scss';
+
+// Components.
+
+@import 'components/_admin-product.scss';
+@import 'components/_admin-sale.scss';
+@import 'components/_tooltips.scss';

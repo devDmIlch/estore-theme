@@ -1,0 +1,204 @@
+
+// Positioning.
+
+@mixin position($position: unset, $top: unset, $right: unset, $bottom: unset, $left: unset, $z-index: unset) {
+	@if ($position != unset) {
+		position: $position;
+	}
+
+	@if ($top != unset) {
+		top: $top;
+	}
+
+	@if ($right != unset) {
+		right: $right;
+	}
+
+	@if ($bottom != unset) {
+		bottom: $bottom;
+	}
+
+	@if ($left != unset) {
+		left: $left;
+	}
+
+	@if ($z-index != unset) {
+		z-index: $z-index;
+	}
+}
+
+
+// Layout.
+
+@mixin flex($direction: row, $gap: 40px, $wrap: wrap, $justify-content: unset, $align-items: unset) {
+	display: flex;
+	flex-direction: $direction;
+	gap: $gap;
+	flex-wrap: $wrap;
+
+	@if ($justify-content != unset) {
+		justify-content: $justify-content;
+	}
+
+	@if ($align-items != unset) {
+		align-items: $align-items;
+	}
+}
+
+
+// Sizing.
+
+@mixin size($width, $height: $width) {
+	width: $width;
+	height: $height;
+}
+
+@mixin max-width($width, $max-width) {
+	max-width: $max-width;
+	width: $width;
+}
+
+@mixin min-width($min-width, $width) {
+	width: $width;
+	min-width: $min-width;
+}
+
+@mixin width($min-width: unset, $width: unset, $max-width: unset) {
+	@if ($max-width != unset) {
+		max-width: $max-width;
+	}
+	@if ($width != unset) {
+		width: $width;
+	}
+	@if ($min-width != unset) {
+		min-width: $min-width;
+	}
+}
+
+@mixin max-height($height, $max-height) {
+	max-height: $max-height;
+	height: $height;
+}
+
+@mixin min-height($min-height, $height) {
+	height: $height;
+	min-height: $min-height;
+}
+
+@mixin height($min-height: unset, $height: unset, $max-height: unset) {
+	@if ($max-height != unset) {
+		max-height: $max-height;
+	}
+	@if ($height != unset) {
+		height: $height;
+	}
+	@if ($min-height != unset) {
+		min-height: $min-height;
+	}
+}
+
+@mixin margin($top: unset, $right: unset, $bottom: unset, $left: unset) {
+	@if ($top != unset) {
+		margin-top: $top;
+	}
+	@if ($right != unset) {
+		margin-right: $right;
+	}
+	@if ($bottom != unset) {
+		margin-bottom: $bottom;
+	}
+	@if ($left != unset) {
+		margin-left: $left;
+	}
+}
+
+@mixin padding($top: unset, $right: unset, $bottom: unset, $left: unset) {
+	@if ($top != unset) {
+		padding-top: $top;
+	}
+	@if ($right != unset) {
+		padding-right: $right;
+	}
+	@if ($bottom != unset) {
+		padding-bottom: $bottom;
+	}
+	@if ($left != unset) {
+		padding-left: $left;
+	}
+}
+
+
+// Elements.
+
+@mixin box($padding, $radius, $color: unset, $outline: unset) {
+	box-sizing: border-box;
+	padding: $padding;
+	border-radius: $radius;
+
+	@if ($color != unset) {
+		background-color: $color;
+	}
+
+	@if ($outline != unset) {
+		outline: $outline;
+	}
+}
+
+@mixin button($padding, $color, $text-color) {
+	@include box($padding: $padding, $color: $color, $radius: 500px);
+
+	color: $text-color;
+}
+
+@mixin input($background-color, $text-color, $outline: unset) {
+	@include box($padding: 19px 34px, $radius: 50px, $color: $background-color, $outline: $outline);
+
+	color: $text-color;
+}
+
+
+// Design.
+
+@mixin border($width: 1px, $type: solid, $color) {
+	border: $width $type $color;
+}
+
+@mixin border-top($width: 1px, $type: solid, $color) {
+	border-top: $width $type $color;
+}
+
+@mixin border-right($width: 1px, $type: solid, $color) {
+	border-right: $width $type $color;
+}
+
+@mixin border-bottom($width: 1px, $type: solid, $color) {
+	border-bottom: $width $type $color;
+}
+
+@mixin border-left($width: 1px, $type: solid, $color) {
+	border-left: $width, $type $color;
+}
+
+@mixin font($line-height: unset, $weight: unset, $size: unset, $font-family: $font-family) {
+	@if ($line-height != unset) {
+		line-height: $line-height;
+	}
+	@if ($weight != unset) {
+		font-weight: $weight;
+	}
+	@if ($size != unset) {
+		font-size: $size;
+	}
+	font-family: $font-family;
+}
+
+
+// Shortcuts.
+
+@mixin add-uah-sign {
+	&::before {
+		font-weight: 400;
+		content: '\20B4';
+	}
+}
+

@@ -1,0 +1,42 @@
+
+body {
+	margin: 0;
+	overflow-x: hidden;
+}
+
+section {
+	@include max-width(100%, 1400px);
+	margin: 0 auto 100px;
+}
+
+.page-content {
+	@include position(relative);
+	@include width($width: 100%, $max-width: 1400px);
+	@include margin($right: auto, $left: auto);
+	box-sizing: border-box;
+	padding: 0 12px 100px;
+
+	&.sale-content {
+		@include font($line-height: 1.2, $size: 16px, $weight: 500);
+	}
+
+	&.shrink {
+		@include width($max-width: 900px);
+	}
+}
+
+div, section {
+	box-sizing: border-box;
+}
+
+body:not(.logged-in) {
+	.only-login {
+		display: none;
+	}
+}
+
+body.logged-in {
+	.only-logout {
+		display: none;
+	}
+}

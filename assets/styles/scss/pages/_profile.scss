@@ -1,0 +1,99 @@
+
+.profile-page {
+	@include flex($gap: 0);
+
+	h1 {
+		width: 100%;
+	}
+
+	.profile-menu {
+		flex: 0 0 200px;
+		@include position(relative);
+		@include margin($top: 8px, $bottom: 8px);
+		@include padding($top: 12px, $bottom: 12px);
+		@include flex($direction: column, $gap: 4px);
+		border-right: 1px solid $light-gray;
+
+		.subpage-link {
+			display: block;
+			@include margin($right: -1px);
+			@include box($padding: 4px 12px, $radius: $border-radius-medium 0 0 $border-radius-medium);
+			@include font($line-height: 1.4, $size: 16px, $weight: 600);
+			color: $black;
+			text-align: right;
+			text-decoration: none;
+			border: 1px solid transparent;
+
+			&.selected {
+				border: 1px solid $light-gray;
+				border-right-color: $white;
+			}
+		}
+	}
+
+	.subpage-content {
+		@include box($padding: 24px, $radius: $border-radius-medium, $outline: 1px solid $light-gray);
+		@include height($min-height: 300px);
+		flex: 1 0 0;
+
+		h2 {
+			@include margin($top: 0);
+			@include font($size: 24px);
+		}
+
+		form {
+			@include flex($gap: 8px);
+
+			.input-label {
+				flex: 1 0 420px;
+
+				&.full-width {
+					flex: 0 1 100%;
+				}
+			}
+		}
+
+		.save-button-wrap {
+
+			.save-button {
+				display: block;
+				@include width($width: max-content);
+				@include margin($top: 12px);
+				@include box($padding: 8px 24px, $radius: $border-radius-small, $color: $blue);
+				@include font($size: 16px, $weight: 600);
+				color: $white;
+				cursor: pointer;
+			}
+		}
+	}
+
+	.success-message, .error-message {
+		@include width(100%);
+		@include margin($bottom: 16px);
+		@include box($padding: 16px, $radius: $border-radius-small);
+		@include font(18px, $weight: 600);
+		color: $white;
+
+		&.disabled {
+			display: none;
+		}
+	}
+
+	.estore-archive {
+		width: unset;
+	}
+
+	.no-orders-message {
+		@include margin($top: 38px);
+		@include font(18px, $weight: 600);
+		text-align: center;
+	}
+
+	.success-message {
+		background-color: $lime;
+	}
+
+	.error-message {
+		background-color: $red;
+	}
+}

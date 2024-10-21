@@ -1,0 +1,52 @@
+
+.website-footer {
+	@include height($min-height: 200px);
+	@include box($padding: 20px 0, $radius: 0);
+	@include border-top($color: $light-gray);
+	background-color: $white;
+	box-shadow: 0 -5px 14px -14px #666;
+
+	.menus {
+		@include flex($gap: 20px);
+		@include max-width($width: 100%, $max-width: 1400px);
+		margin: 0 auto 20px;
+		padding: 0 0 20px;
+		border-bottom: 1px solid $light-gray;
+
+		.footer-menu {
+			flex: 1 0 250px;
+
+			ul {
+				margin: 0;
+				padding: 0;
+				list-style: none;
+
+				li {
+					@include font($line-height: 2, $size: 16px, $weight: 600);
+
+					a {
+						text-decoration: none;
+					}
+				}
+			}
+
+			&:last-child {
+				text-align: right;
+			}
+		}
+	}
+
+	.credentials {
+		@include flex($gap: 12px, $justify-content: space-between);
+		@include font($size: 16px);
+		@include max-width($width: 100%, $max-width: 1400px);
+		margin: auto;
+		padding: 0 0 20px;
+
+		a {
+			color: $text-color;
+			text-decoration: none;
+			font-weight: 600;
+		}
+	}
+}

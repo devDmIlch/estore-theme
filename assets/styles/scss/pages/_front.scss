@@ -1,0 +1,81 @@
+
+.home-page {
+	@include flex($align-items: flex-start);
+	@include width($max-width: 1400px);
+	@include margin($left: auto, $right: auto);
+	@include padding($top: 120px !important, $right: 24px, $left: 24px);
+
+	.home-menu {
+		display: none;
+		@include width($width: 300px);
+		@include box($padding: 12px, $radius: $border-radius-medium, $color: $white, $outline: 1px solid $light-gray);
+
+		@media screen and (min-width: 1024px) {
+			display: block;
+		}
+	}
+
+	.home-content {
+		@include width($max-width: 1000px);
+		flex: 1 0 0;
+
+		.sales-carousel {
+			@include margin($bottom: 50px);
+
+			.single-slide {
+				&[href] {
+					cursor: pointer;
+				}
+			}
+		}
+
+		.section-title {
+			@include width($width: 100%);
+			@include margin($top: 0);
+			line-height: 1;
+		}
+
+		.home-categories {
+			@include flex($gap: 24px);
+
+			.category-link {
+				@include flex($align-items: flex-end);
+				@include box($padding: 12px, $radius: $border-radius-medium, $color: $white, $outline: 1px solid $light-gray);
+				@include width($width: 200px);
+				text-decoration: none;
+				transition: .2s;
+				aspect-ratio: 1 / 1;
+
+				&:hover {
+					transform: scale(1.1);
+				}
+
+				.category {
+					@include flex($gap: 12px, $justify-content: center, $align-items: center);
+					width: 100%;
+
+					.category-icon {
+						width: 100%;
+						aspect-ratio: 1 / 1;
+						object-fit: contain;
+						border-radius: $border-radius-small;
+					}
+
+					.text {
+						@include font($size: 20px, $weight: 500);
+						text-align: center;
+						color: $text-color;
+					}
+				}
+			}
+		}
+	}
+}
+
+.home {
+	.menu-trigger {
+		@media screen and (min-width: 1024px) {
+			display: none;
+		}
+	}
+}

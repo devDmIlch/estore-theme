@@ -1,0 +1,145 @@
+
+// Default fonts.
+
+h1 {
+	line-height: 1.4;
+	font: 600 48px $font-family;
+	color: $text-color;
+}
+
+h2 {
+	@extend h1;
+	font-size: 36px;
+}
+
+h3 {
+	@extend h2;
+}
+
+h4 {
+	line-height: 1.4;
+	font: 600 18px $font-family;
+	color: $text-color;
+}
+
+p, li {
+	line-height: 1.4;
+	font: 600 16px $font-family;
+	color: $text-color;
+}
+
+a {
+	@extend p;
+	font-weight: 500;
+}
+
+// Custom fonts.
+
+@mixin admin-input {
+	line-height: 1.4;
+	font: 300 13px $font-family;
+	color: $text-color;
+}
+
+
+// Special Text.
+
+@mixin card-title-font($size: 28px) {
+	@include font($line-height: 1.25, $size: $size, $weight: 700);
+	margin: 4px 0;
+
+	a {
+		color: $black;
+	}
+}
+
+@mixin card-desc-font($size: 14px) {
+	@include font($line-height: 1.25, $size: $size, $weight: 500);
+	margin: 0;
+}
+
+
+// Icons.
+
+
+@mixin sort-ico($size: 10px) {
+	@include position(relative);
+	@include size($size, $size / 10);
+	display: block;
+	background-color: $darker-gray;
+	border-radius: $size / 10;
+	pointer-events: none;
+
+	&::before, &::after {
+		@include height($height: $size / 10);
+		content: '';
+		background-color: $darker-gray;
+		border-radius: $size / 10;
+	}
+
+	&::before {
+		@include position(absolute, $top: - $size / 2);
+		@include width($width: $size - $size / 3);
+	}
+
+	&::after {
+		@include position(absolute, $top: $size / 2);
+		@include width($width: $size + $size / 3);
+	}
+}
+
+@mixin downward-caret-ico($size: 10px) {
+	@include position(relative, $top: - $size / 5);
+	@include size($size);
+	display: block;
+	transform: rotate(45deg) skew(-2deg);
+	border-right: 1px solid $darker-gray;
+	border-bottom: 1px solid $darker-gray;
+}
+
+
+// Forms.
+
+.input-label {
+	@include position(relative);
+	@include flex($direction: column, $gap: 6px);
+	@include padding($bottom: 12px);
+
+	&.disabled {
+		pointer-events: none;
+
+		.text-input {
+			opacity: .5;
+		}
+	}
+
+	.label-text {
+		@include font($weight: 500, $size: 16px);
+		@include padding($left: 8px);
+	}
+
+	.text-input {
+		@include height($height: 40px);
+		@include box($padding: 2px 8px, $radius: $border-radius-small, $color: $light-gray, $outline: none);
+		@include font($weight: 500, $size: 16px);
+		border: none;
+
+		&.error {
+			outline: 1px solid $red;
+		}
+	}
+
+	.missing-field-notice {
+		@include position(absolute, $bottom: -4px, $right: 0);
+		@include font($weight: 500, $size: 14px);
+		color: $red;
+	}
+}
+
+// Symbols.
+
+.uah-price {
+
+	&::before {
+	}
+}

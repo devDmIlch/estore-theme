@@ -1,0 +1,115 @@
+
+.post-selector {
+	@include flex($gap: 1px);
+	background-color: $light-gray;
+
+	.selection-area-wrap {
+		@include padding($right: 8px);
+		flex: 0 0 350px;
+		background-color: $white;
+
+		h3 {
+			@include margin($top: 0, $bottom: 4px);
+			@include font($size: 16px, $weight: 500);
+		}
+
+		.selection-area {
+			@include height($height: 250px);
+			@include box($padding: 4px, $radius: $border-radius-small, $outline: 1px solid $light-gray);
+			overflow: auto;
+		}
+
+		.input-search {
+			@include width($width: 100%);
+			@include margin($bottom: 8px);
+		}
+
+		.option {
+			@include position(relative);
+			@include box($radius: $border-radius-small, $padding: 4px 4px 4px 32px);
+			@include font($size: 14px);
+			transition: .2s;
+			cursor: pointer;
+
+			&:hover {
+				background-color: $light-gray;
+			}
+
+			&::before {
+				content: '';
+				@include position(absolute, $top: 6px, $left: 6px);
+				@include size(12px);
+				border: 2px solid $blue;
+			}
+
+			&.active {
+				&::before {
+					background-color: $blue;
+					box-shadow: inset 0 0 0 2px $white;
+				}
+			}
+
+			&.inactive {
+				display: none;
+			}
+		}
+	}
+
+	.selected-values {
+		@include flex($gap: 8px);
+		@include padding($left: 8px, $right: 8px);
+		flex: 1 0 0;
+		background-color: $white;
+
+		.single-store-item-control {
+			@include height($height: fit-content);
+			@include box($padding: 0, $radius: $border-radius-small, $outline: 1px solid $light-gray);
+			flex: 0 0 200px;
+			overflow: hidden;
+
+			.item-thumbnail {
+				@include padding($top: 8px, $left: 8px, $right: 8px);
+
+				img {
+					@include size(100%);
+					border-radius: $border-radius-small;
+					object-fit: cover;
+				}
+			}
+
+			.item-data {
+				@include padding($left: 8px, $right: 8px);
+
+				h3 {
+					@include margin($top: 0, $bottom: 8px);
+					@include font($line-height: 1.4, $size: 16px, $weight: 400);
+				}
+			}
+
+			.controls {
+				@include flex($gap: 1px);
+
+				.prev, .next {
+					flex: 1 0 0;
+					outline: 1px solid $light-gray;
+					text-align: center;
+					cursor: pointer;
+				}
+			}
+
+			&:first-child {
+				.controls .prev {
+					opacity: .5;
+					pointer-events: none;
+				}
+			}
+
+			&:last-child {
+				.controls .next {
+					opacity: .5;
+					pointer-events: none;
+				}
+			}
+		}
+	}
+}

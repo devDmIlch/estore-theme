@@ -1,0 +1,36 @@
+
+.filter-section {
+	@include box($padding: 12px, $radius: $border-radius-medium, $outline: 1px solid $light-gray);
+	box-sizing: border-box;
+	box-shadow: $box-shadow-generic;
+
+	.filter-name {
+		@include font($line-height: 1.8, $size: 24px, $weight: 700);
+	}
+
+	.filter-option-list {
+		@include padding($top: 10px);
+		border-top: 1px solid $light-gray;
+	}
+
+	.filter-checkbox {
+		@include flex($gap: 12px, $align-items: center);
+		@include font($line-height: 1.8, $size: 16px, $weight: 700);
+		cursor: pointer;
+
+		&::before {
+			@include flex($justify-content: center, $align-items: center);
+			@include size(16px);
+			@include box($padding: 2px, $radius: $border-radius-small, $outline: 1px solid $light-gray);
+			@include font($line-height: 0, $size: 18px, $weight: 600);
+			content: '+';
+			color: $white;
+		}
+
+		&.active {
+			&::before {
+				background-color: $blue;
+			}
+		}
+	}
+}
